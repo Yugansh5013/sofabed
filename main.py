@@ -47,7 +47,7 @@ def verify_shopify_proxy_signature(query_params: dict, secret: str) -> bool:
     # 3. Securely compare signatures to prevent timing side-channel attacks
     return hmac.compare_digest(provided_signature, calculated_signature)
 
-@app.post("/apps/regional-pricing/api/check-price")
+@app.post("/api/check-price")
 async def check_price(request: Request, payload: PriceCheckRequest):
     # Enforce strict signature checking using the URL query parameters sent by Shopify's proxy engine
     query_params = dict(request.query_params)
